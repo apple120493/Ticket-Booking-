@@ -1,47 +1,28 @@
-
-
-// script.js
-
-// 獲取元素
-const bookTicketButton = document.getElementById('bookTicketButton');
-const statusElement = document.getElementById('status');
-const seats = document.querySelectorAll('.seat');  // 所有座位
-
-// 初始化選擇座位
 let selectedSeats = [];
 
-// 座位點擊事件
-seats.forEach(seat => {
-    seat.addEventListener('click', () => {
-        const seatId = seat.id;
-        if (selectedSeats.includes(seatId)) {
-            // 取消選擇座位
-            selectedSeats = selectedSeats.filter(id => id !== seatId);
-            seat.classList.remove('selected');
-        } else {
-            // 選擇座位
-            selectedSeats.push(seatId);
-            seat.classList.add('selected');
-        }
-    });
-});
+function selectSeat(seat) {
+    const seatButton = document.querySelector(`button[onclick="selectSeat(${seat})"]`);
+    if (selectedSeats.includes(seat)) {
+        selectedSeats = selectedSeats.filter(item => item !== seat);
+        seatButton.classList.remove('selected');
+    } else {
+        selectedSeats.push(seat);
+        seatButton.classList.add('selected');
+    }
+}
 
-// 搶票邏輯
-bookTicketButton.addEventListener('click', () => {
+function bookTicket() {
     if (selectedSeats.length === 0) {
-        statusElement.textContent = "請選擇至少一個座位！";
-        statusElement.style.color = "red";
+        document.getElementById("status").innerText = "請選擇至少一個座位！";
         return;
     }
 
-    // 隨機模擬搶票成功或失敗
-    const isSuccess = Math.random() > 0.5;  // 隨機結果
+    // 隨機搶票成功或失敗
+    const isSuccess = Math.random() > 0.5;
 
     if (isSuccess) {
-        statusElement.textContent = "恭喜你！搶票成功！選擇的座位是：" + selectedSeats.join(", ");
-        statusElement.style.color = "green";
+        document.getElementById("status").innerText = "恭喜你！搶票成功！選擇的座位是：" + selectedSeats.join(", ");
     } else {
-        statusElement.textContent = "很遺憾，搶票失敗。請再試一次。";
-        statusElement.style.color = "red";
+        document.getElementById("status").innerText = "很遺憾，搶票失敗。請再試一次。";
     }
-});
+}
