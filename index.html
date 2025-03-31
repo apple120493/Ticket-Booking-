@@ -1,14 +1,13 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>搶票系統 - 魅力瀏海無邊</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div style="text-align:center; padding: 20px;">
+    <div class="container">
         <h1>陶喆 演唱會 - 魅力瀏海無邊</h1>
         <p>選擇你想要的座位和時間</p>
         
@@ -24,48 +23,22 @@
 
         <!-- 座位區 -->
         <h2>選擇座位</h2>
-        <div id="seatingArea">
-            <button onclick="selectSeat(1)">1</button>
-            <button onclick="selectSeat(2)">2</button>
-            <button onclick="selectSeat(3)">3</button>
-            <br>
-            <button onclick="selectSeat(4)">4</button>
-            <button onclick="selectSeat(5)">5</button>
-            <button onclick="selectSeat(6)">6</button>
-        </div><br>
+        <div class="seat-row">
+            <button class="seat" onclick="selectSeat(1)">1</button>
+            <button class="seat" onclick="selectSeat(2)">2</button>
+            <button class="seat" onclick="selectSeat(3)">3</button>
+        </div>
+        <div class="seat-row">
+            <button class="seat" onclick="selectSeat(4)">4</button>
+            <button class="seat" onclick="selectSeat(5)">5</button>
+            <button class="seat" onclick="selectSeat(6)">6</button>
+        </div>
 
         <button onclick="bookTicket()">搶票</button>
 
-        <p id="status" style="font-weight: bold;"></p>
-
-        <script>
-        let selectedSeats = [];
-
-        function selectSeat(seat) {
-            if (selectedSeats.includes(seat)) {
-                selectedSeats = selectedSeats.filter(item => item !== seat);
-            } else {
-                selectedSeats.push(seat);
-            }
-            console.log(selectedSeats);  // 測試用，檢查是否正確選擇座位
-        }
-
-        function bookTicket() {
-            if (selectedSeats.length === 0) {
-                document.getElementById("status").innerText = "請選擇至少一個座位！";
-                return;
-            }
-
-            // 隨機搶票成功或失敗
-            const isSuccess = Math.random() > 0.5;
-
-            if (isSuccess) {
-                document.getElementById("status").innerText = "恭喜你！搶票成功！選擇的座位是：" + selectedSeats.join(", ");
-            } else {
-                document.getElementById("status").innerText = "很遺憾，搶票失敗。請再試一次。";
-            }
-        }
-        </script>
+        <div id="status" class="status"></div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
