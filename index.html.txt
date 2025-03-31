@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搶票系統 - 魅力瀏海無邊</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>陶喆 演唱會 - 魅力瀏海無邊</h1>
+        <p>選擇你想要的座位和時間</p>
+        
+        <!-- 日期選擇 -->
+        <label for="date">選擇日期：</label>
+        <input type="date" id="date" name="date" value="2025-04-01">
+
+        <!-- 時間選擇 -->
+        <label for="time">選擇時間：</label>
+        <select id="time">
+            <option value="15:00">15:00</option>
+        </select>
+
+        <!-- 座位區 -->
+        <h2>選擇座位</h2>
+        <div id="seatingArea">
+            <!-- 模擬座位圖，座位是可點擊的 -->
+            <div class="seat-row">
+                <button class="seat" id="seat1">1</button>
+                <button class="seat" id="seat2">2</button>
+                <button class="seat" id="seat3">3</button>
+            </div>
+            <div class="seat-row">
+                <button class="seat" id="seat4">4</button>
+                <button class="seat" id="seat5">5</button>
+                <button class="seat" id="seat6">6</button>
+            </div>
+        </div>
+
+        <button id="bookTicketButton">搶票</button>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
